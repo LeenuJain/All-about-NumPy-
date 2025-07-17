@@ -150,7 +150,21 @@ print("flattened:", flattened)  # [99  2  3  4]
 print("original:", arr)        # [[1  2], [3  4]]
 ```
 ---
+#### Can NumPy Store Different Types of Objects in an Array?
+Yes, but with limitations. NumPy can store different types of objects in an array using the dtype=object, but this comes with important trade-offs.
 
+Object Arrays in NumPy
+```pythin
+import numpy as np
+# Creating an array with mixed types
+mixed_array = np.array([1, 'hello', 3.14, [1, 2, 3], {'key': 'value'}], dtype=object)
+print(mixed_array)  # [1 'hello' 3.14 list([1, 2, 3]) {'key': 'value'}]
+```
+**Limitations and Trade-offs**
+Performance   --	Object arrays are much slower than homogeneous arrays
+Memory        --	Less efficient memory usage compared to typed arrays
+Vectorization --	Most NumPy's optimized operations won't work with object arrays
+Storage	      -- Stores references to Python objects, not the actual objects
 
 
 
