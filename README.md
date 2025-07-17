@@ -35,7 +35,7 @@ NumPy is an **open-source project** and can be used freely.
 - **Python lists** store pointers to each object, leading to **non-contiguous memory**.
 - **NumPy** stores data in a **contiguous memory block**, which the CPU can access more efficiently (better **cache locality**).
 
-## 🔸 Vectorization – No More Loops!
+## 3.Vectorization – No More Loops!
 Vectorization means **applying an operation to an entire array at once**, instead of looping through each element individually.
 - NumPy avoids `for` loops by using **vectorized operations**, which are:
   - Faster
