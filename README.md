@@ -88,7 +88,34 @@ np_array_squared = np_array ** 2  # Vectorized operation
 ---
 
 ## 🔸Important points to be noted:
+#### np.empty()
 - np.empty() creates an array without initializing its values.
   It allocates memory for the array but doesn’t set the values to 0 or anything — the contents are just whatever happens to be in memory at that time (random garbage values).
 - np.empty() is used when you want an arry but you plan to fill the array later
-
+ ---
+ #### reshape Vs resize
+**reshape()**
+- Returns a new array or view with the new shape
+- Does not modify the original array
+- The total number of elements must remain the same
+- Memory efficient: Often returns a view (not a copy) when possible
+  ```python
+  arr = np.array([[1, 2], [3, 4]])
+  new_arr = arr.reshape(1, 4)  # Original array unchanged
+  print(arr)      # [[1, 2], [3, 4]]
+  print(new_arr)  # [[1, 2, 3, 4]]
+  ```
+**resize()**
+- Modifies the array in-place
+- Can change the total number of elements
+- If new size is larger: array is expanded, new elements filled with zeros
+- If new size is smaller: array is truncated
+```python
+arr = np.array([[1, 2], [3, 4]])
+arr.resize(3, 3)  # Original array is modified
+print(arr)  
+# [[1, 2, 0],
+#  [3, 4, 0],
+#  [0, 0, 0]]
+```
+---
