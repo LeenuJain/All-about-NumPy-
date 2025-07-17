@@ -359,6 +359,34 @@ Dim	A	B	Result
 
 ---
 
-
-
-
+## 🔸Cumulative Sum & Cumulative Product
+#### Cumulative Sum
+It means adding elements one by one and keeping a running total.
+Example:
+```python
+import numpy as np
+a = np.array([1, 2, 3, 4]) 
+np.cumsum(a)
+```
+How it works:
+| Step | Element | Running Sum     |
+|------|---------|------------------|
+| 1    | 1       | 1                |
+| 2    | 2       | 1 + 2 = 3        |
+| 3    | 3       | 3 + 3 = 6        |
+| 4    | 4       | 6 + 4 = 10       |
+Result:
+```python
+array([1, 3, 6, 10])
+```
+#### Cumulative Product
+It means multiplying elements one by one and keeping a running product.
+Example:
+```python
+np.cumprod([1, 2, 3, 4])
+```
+result
+```python
+array([1, 2, 6, 24])
+```
+---
