@@ -79,11 +79,16 @@ np_array_squared = np_array ** 2  # Vectorized operation
 ```
 
 - In the list example, you need a loop or list comprehension.
-- In the NumPy example, the operation is vectorized, making it cleaner and faster.
+- In the NumPy example, the operation is vectorized, making it cleaner and faster
 
 ### ✅ When to Use What?
-
 - Use **Python lists** for general-purpose tasks, especially when working with **mixed data types** or **small datasets**.
 - Use **NumPy arrays** when you need **speed**, **efficiency**, and **advanced mathematical operations** on **large numerical datasets**.
 
+---
+
+## 🔸Important points to be noted:
+- np.empty() creates an array without initializing its values.
+  It allocates memory for the array but doesn’t set the values to 0 or anything — the contents are just whatever happens to be in memory at that time (random garbage values).
+- np.empty() is used when you want an arry but you plan to fill the array later
 
