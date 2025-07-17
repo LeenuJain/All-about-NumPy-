@@ -392,7 +392,7 @@ array([1, 2, 6, 24])
 ```
 ---
 ## 🔸Random :
-**1.np.random.seed()**
+**1.np.random.seed()**  
 The np.random.seed() function sets the starting point for NumPy's random number generator. It ensures that **you get the same random numbers every time you run your code**.
 If you want repeatable results (especially in testing or debugging), you use a seed.
 
@@ -404,7 +404,7 @@ print(np.random.rand(3)) # [0.37454012 0.95071431 0.73199394]
 ```
 Every time you run this, you’ll get exactly same output unless you chnage the see value.
 
-**2.np.random.rand() — Uniform distribution [0, 1)**
+**2.np.random.rand() — Uniform distribution [0, 1)**  
 Generates random floats between 0 and 1 (exclusive), from a uniform distribution.
 ```python
 a = np.random.rand()
@@ -422,7 +422,7 @@ result
  [0.87465708 0.6873813  0.09383688]]
 ```
 
-**3.np.random.randn() — Standard normal distribution**
+**3.np.random.randn() — Standard normal distribution**  
 Generates random values from a standard normal distribution (mean = 0, std = 1). Can be negative.
 ```python
 a = np.random.randn(2, 3)
@@ -434,7 +434,7 @@ result :
  [ 1.5230 -0.2341 -0.2341]]
 ```
 
-**4.np.random.randint() — Random integers**
+**4.np.random.randint() — Random integers**  
 Syntax :
 ```python
 np.random.randint(low, high, size)
@@ -450,7 +450,7 @@ result
  [11 17 10]]
 ```
 
-**5.np.random.choice() — Randomly pick from a list**
+**5.np.random.choice() — Randomly pick from a list**  
 Syntax : 
 ```python
 np.random.choice(array, size, replace=True/False)
@@ -468,7 +468,7 @@ result
 [2 4 1]
 ```
 
-**6.np.random.shuffle() — Shuffle an array in-place**
+**6.np.random.shuffle() — Shuffle an array in-place**  
 - Modifies the array directly
 - No return value
 
