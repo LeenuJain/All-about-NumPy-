@@ -126,6 +126,29 @@ print(arr)
 | Modification effect  | If you modify the array you would notice that the value of the original array also changes | If you modify any value of this array value of the original array is not affected | 
 | Performance          | Ravel is faster than flatten() as it does not occupy any memory                            | Flatten() is comparatively slower than ravel() as it occupies memory              | 
 | Implementation       | Ravel is a library-level function                                                          | Flatten is a method of an ndarray object.                                         | 
+
+```python
+import numpy as np
+
+arr = np.array([[1, 2], [3, 4]])
+
+# Using ravel()
+raveled = arr.ravel()
+raveled[0] = 99  # This will modify the original array too (if view was returned)
+print("After modifying raveled:")
+print("raveled:", raveled)  # [99  2  3  4]
+print("original:", arr)    # [[99  2], [ 3  4]]
+
+# Reset array
+arr = np.array([[1, 2], [3, 4]])
+
+# Using flatten()
+flattened = arr.flatten()
+flattened[0] = 99  # This will NOT modify the original array
+print("\nAfter modifying flattened:")
+print("flattened:", flattened)  # [99  2  3  4]
+print("original:", arr)        # [[1  2], [3  4]]
+```
 ---
 
 
