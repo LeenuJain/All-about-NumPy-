@@ -306,9 +306,58 @@ print(a + b)
 - If one shape is 1 → it is broadcasted (stretched).
 - If shapes can’t be aligned → error.
 
+**Step-by-Step Guide to Manually Check Broadcasting Compatibility**
+Step 1: Write down the shapes of both arrays
+Let’s say:
+```python
+A.shape = (2, 3, 4)
+B.shape = (3, 1)
+```
+You need to compare the shapes from right to left (trailing dimensions first).
+
+Step 2: Pad the smaller shape with 1s (on the left)
+```python
+A: (2, 3, 4)
+B:     (3, 1)  → pad to → (1, 3, 1)
+```
+Now both shapes are the same length.
+
+Step 3: Compare dimensions one by one (from right to left)
+Rule: For each dimension — it's OK if:
+They are equal, OR
+One of them is 1 (it can be stretched)
+
+So:
+Dim	A	B	Result
+- 3	2	1	✅ OK (B will stretch)
+- 2	3	3	✅ OK
+- 1	4	1	✅ OK (B will stretch)
+
+✅ ✅ ✅ → They can be broadcast together!
+
 ---
 
+## 🔸 NumPy Math & Stats Function Summary (1D & 2D)
 
+| Function       | Description                  | 1D Example Code         | Output (1D)     | 2D Example Code                           | Output (2D)                         |
+|----------------|------------------------------|-------------------------|------------------|-------------------------------------------|-------------------------------------|
+| `np.sum()`     | Sum of all elements          | `np.sum([1, 2, 3])`     | `6`              | `np.sum([[1, 2], [3, 4]])`                | `10` (entire array)                 |
+|                |                              |                         |                  | `np.sum(..., axis=0)`                     | `[4 6]` (column-wise)               |
+|                |                              |                         |                  | `np.sum(..., axis=1)`                     | `[3 7]` (row-wise)                  |
+| `np.mean()`    | Average (mean) value         | `np.mean([1, 2, 3])`    | `2.0`            | `np.mean([[1, 2], [3, 4]])`               | `2.5`                               |
+| `np.std()`     | Standard deviation           | `np.std([1, 2, 3])`     | `0.816...`       | `np.std([[1, 2], [3, 4]])`                | `1.118...`                          |
+| `np.var()`     | Variance                     | `np.var([1, 2, 3])`     | `0.666...`       | `np.var([[1, 2], [3, 4]])`                | `1.25`                              |
+| `np.min()`     | Minimum value                | `np.min([4, 1, 9])`     | `1`              | `np.min([[4, 1], [9, 7]])`                | `1`                                 |
+| `np.max()`     | Maximum value                | `np.max([4, 1, 9])`     | `9`              | `np.max([[4, 1], [9, 7]])`                | `9`                                 |
+| `np.argmin()`  | Index of min value           | `np.argmin([4, 1, 9])`  | `1`              | `np.argmin([[4, 1], [9, 7]])`             | `1` (flattened index)              |
+| `np.argmax()`  | Index of max value           | `np.argmax([4, 1, 9])`  | `2`              | `np.argmax([[4, 1], [9, 7]])`             | `2` (flattened index)              |
+| `np.cumsum()`  | Cumulative sum               | `np.cumsum([1, 2, 3])`  | `[1 3 6]`        | `np.cumsum([[1, 2], [3, 4]])`             | `[1 3 6 10]` (flattened)           |
+| `np.cumprod()` | Cumulative product           | `np.cumprod([1, 2, 3])` | `[1 2 6]`        | `np.cumprod([[1, 2], [3, 4]])`            | `[1 2 6 24]` (flattened)           |
+| `np.exp()`     | Exponential (e^x)            | `np.exp([0, 1])`        | `[1. 2.718...]`  | `np.exp([[0, 1], [2, 3]])`                | `[[1. 2.71] [7.38 20.08]]`          |
+| `np.log()`     | Natural log (ln)             | `np.log([1, np.e])`     | `[0. 1.]`        | `np.log([[1, np.e], [np.e**2, np.e**3]])` | `[[0. 1.] [2. 3.]]`                 |
+| `np.sqrt()`    | Square root                  | `np.sqrt([1, 4, 9])`    | `[1. 2. 3.]`     | `np.sqrt([[1, 4], [9, 16]])`              | `[[1. 2.] [3. 4.]]`                 |
+
+---
 
 
 
