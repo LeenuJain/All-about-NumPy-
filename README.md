@@ -160,10 +160,11 @@ mixed_array = np.array([1, 'hello', 3.14, [1, 2, 3], {'key': 'value'}], dtype=ob
 print(mixed_array)  # [1 'hello' 3.14 list([1, 2, 3]) {'key': 'value'}]
 ```
 **Limitations and Trade-offs**
-Performance   --	Object arrays are much slower than homogeneous arrays
-Memory        --	Less efficient memory usage compared to typed arrays
-Vectorization --	Most NumPy's optimized operations won't work with object arrays
-Storage	      -- Stores references to Python objects, not the actual objects
+Performance   --	Object arrays are much slower than homogeneous arrays  
+Memory        --	Less efficient memory usage compared to typed arrays  
+Vectorization --	Most NumPy's optimized operations won't work with object arrays  
+Storage	      -- Stores references to Python objects, not the actual objects  
+
 ---
 ## 🔸Indexing & Slicling
  **1. Basic Indexing (Like Python Lists)**
