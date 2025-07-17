@@ -391,3 +391,104 @@ result
 array([1, 2, 6, 24])
 ```
 ---
+## 🔸Random :
+**1.np.random.seed()**
+The np.random.seed() function sets the starting point for NumPy's random number generator. It ensures that **you get the same random numbers every time you run your code**.
+If you want repeatable results (especially in testing or debugging), you use a seed.
+
+```python
+import numpy as np
+
+np.random.seed(42)
+print(np.random.rand(3)) # [0.37454012 0.95071431 0.73199394]
+```
+Every time you run this, you’ll get exactly same output unless you chnage the see value.
+
+**2.np.random.rand() — Uniform distribution [0, 1)**
+Generates random floats between 0 and 1 (exclusive), from a uniform distribution.
+```python
+a = np.random.rand()
+b = np.random.rand(2,)
+c = np.random.rand(2, 3)
+print(a)
+print(b)
+print(c)
+```
+result
+```python
+0.8611055075863213
+[0.08521139 0.32471667]
+[[0.66486494 0.16458129 0.45351088]
+ [0.87465708 0.6873813  0.09383688]]
+```
+
+**3.np.random.randn() — Standard normal distribution**
+Generates random values from a standard normal distribution (mean = 0, std = 1). Can be negative.
+```python
+a = np.random.randn(2, 3)
+print(a)
+```
+result : 
+```python
+[[ 0.4967 -0.1383  0.6476]
+ [ 1.5230 -0.2341 -0.2341]]
+```
+
+**4.np.random.randint() — Random integers**
+Syntax :
+```python
+np.random.randint(low, high, size)
+```
+Generates random integers in [low, high)
+Example
+```python
+np.random.randint(10, 20, size=(2, 3))
+```
+result
+```python
+[[13 16 19]
+ [11 17 10]]
+```
+
+**5.np.random.choice() — Randomly pick from a list**
+Syntax : 
+```python
+np.random.choice(array, size, replace=True/False)
+```
+- replace=True	-- Random elements, can repeat
+- replace=False	-- Random unique elements only
+
+```python
+random = np.random.choice([1, 2, 3, 4, 5], size=3)
+random_false = np.random.choice([1, 2, 3, 4, 5], size=3, replace=False)
+```
+result
+```python
+[1 1 3] 
+[2 4 1]
+```
+
+**6.np.random.shuffle() — Shuffle an array in-place**
+- Modifies the array directly
+- No return value
+
+```python
+arr = np.array([1, 2, 3, 4, 5])
+np.random.shuffle(arr)
+print(arr) # [4 1 5 3 2]
+```
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
