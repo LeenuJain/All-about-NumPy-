@@ -119,3 +119,18 @@ print(arr)
 #  [0, 0, 0]]
 ```
 ---
+#### flatten Vs ravel()
+| Feature              | ravel()                                                                                    | flatten()                                                                         | 
+|----------------------|--------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------|
+| Return type          | Returns only reference/view of the original array                                          | Returns copy of the original array                                                | 
+| Modification effect  | If you modify the array you would notice that the value of the original array also changes | If you modify any value of this array value of the original array is not affected | 
+| Performance          | Ravel is faster than flatten() as it does not occupy any memory                            | Flatten() is comparatively slower than ravel() as it occupies memory              | 
+| Implementation       | Ravel is a library-level function                                                          | Flatten is a method of an ndarray object.                                         | 
+---
+
+
+
+
+
+
+
