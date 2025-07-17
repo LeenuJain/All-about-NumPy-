@@ -87,13 +87,12 @@ np_array_squared = np_array ** 2  # Vectorized operation
 
 ---
 
-## 🔸Important points to be noted:
-#### np.empty()
+## 🔸 np.empty()
 - np.empty() creates an array without initializing its values.
   It allocates memory for the array but doesn’t set the values to 0 or anything — the contents are just whatever happens to be in memory at that time (random garbage values).
 - np.empty() is used when you want an arry but you plan to fill the array later
  ---
- #### reshape Vs resize
+ ## 🔸reshape Vs resize
 **reshape()**
 - Returns a new array or view with the new shape
 - Does not modify the original array
@@ -119,7 +118,7 @@ print(arr)
 #  [0, 0, 0]]
 ```
 ---
-#### flatten Vs ravel()
+## 🔸 flatten Vs ravel()
 | Feature              | ravel()                                                                                    | flatten()                                                                         | 
 |----------------------|--------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------|
 | Return type          | Returns only reference/view of the original array                                          | Returns copy of the original array                                                | 
@@ -150,7 +149,7 @@ print("flattened:", flattened)  # [99  2  3  4]
 print("original:", arr)        # [[1  2], [3  4]]
 ```
 ---
-#### Can NumPy Store Different Types of Objects in an Array?
+## 🔸Can NumPy Store Different Types of Objects in an Array?
 Yes, but with limitations. NumPy can store different types of objects in an array using the dtype=object, but this comes with important trade-offs.
 
 Object Arrays in NumPy
@@ -165,6 +164,148 @@ Performance   --	Object arrays are much slower than homogeneous arrays
 Memory        --	Less efficient memory usage compared to typed arrays
 Vectorization --	Most NumPy's optimized operations won't work with object arrays
 Storage	      -- Stores references to Python objects, not the actual objects
+---
+## 🔸Indexing & Slicling
+ **1. Basic Indexing (Like Python Lists)**
+✅ 1D Array
+```python
+import numpy as np
+arr = np.array([10, 20, 30, 40])
+print(arr[0])  # 10
+print(arr[-1]) # 40 (last element)
+```
+✅ 2D Array
+```python
+arr2d = np.array([[1, 2, 3],
+                  [4, 5, 6]])
+print(arr2d[0][1])     # 2
+print(arr2d[0, 1])     # 2 (better/faster)
+print(arr2d[1, -1])    # 6
+```
+**2. Slicing (Start:Stop:Step)**
+```python
+arr = np.array([10, 20, 30, 40, 50])
+print(arr[1:4])     # [20 30 40]
+print(arr[:3])      # [10 20 30]
+print(arr[::2])     # [10 30 50]
+```
+✅ 2D Slicing
+```python
+arr2d = np.array([[1, 2, 3],
+                  [4, 5, 6],
+                  [7, 8, 9]])
+
+print(arr2d[0:2, 1:3])  # [[2 3], [5 6]]
+```
+**3. Fancy Indexing (Index with List or Array)**
+✅ 1D Fancy Indexing
+```python
+arr = np.array([10, 20, 30, 40, 50])
+print(arr[[1, 3, 4]])  # [20 40 50]
+```
+✅ 2D Fancy Indexing
+```python
+arr2d = np.array([[1, 2],
+                  [3, 4],
+                  [5, 6]])
+```
+Get specific elements using row and col indexes
+```python
+print(arr2d[[0, 1, 2], [1, 0, 1]])  # [2 3 6]
+```
+**4. Boolean Indexing (Filter using conditions)**
+```python
+arr = np.array([10, 15, 20, 25])
+print(arr[arr > 15])  # [20 25]
+```
+✅ Combine with logical operators
+```python
+print(arr[(arr > 10) & (arr < 25)])  # [15 20]
+```
+**5. Indexing with np.where()**
+```python
+arr = np.array([10, 15, 20, 25])
+index = np.where(arr > 15)
+print(index)         # (array([2, 3]),)
+print(arr[index])    # [20 25]
+```
+---
+## 🔸 Array operations
+**1. Element-wise Arithmetic**
+When you apply +, -, *, or / to two NumPy arrays (or an array and a scalar), it applies the operation to each element individually.
+Example:
+```python
+import numpy as np
+
+a = np.array([1, 2, 3])
+b = np.array([10, 20, 30])
+
+print(a + b)  # [11 22 33]
+print(a - b)  # [-9 -18 -27]
+print(a * b)  # [10 40 90]
+print(b / a)  # [10. 10. 10.]
+```
+➡ With Scalar:
+```python
+print(a + 5)  # [6 7 8]
+```
+➡ Works element-by-element, no need for loops!
+
+**2. Element-wise Comparison**
+Returns a Boolean array showing where the condition is True.
+```python
+a = np.array([1, 2, 3])
+
+print(a > 2)   # [False False  True]
+print(a == 2)  # [False  True False]
+print(a != 1)  # [False  True  True]
+```
+These Boolean arrays are often used in filtering or masking.
+
+**3. Logical Operations**
+For combining multiple conditions:
+You can’t use and or or with arrays. Use NumPy’s logical functions instead.
+
+np.logical_and() and np.logical_or()
+```python
+a = np.array([10, 20, 30, 40])
+
+# Select values between 15 and 35
+condition = np.logical_and(a > 15, a < 35)
+print(condition)      # [False  True  True False]
+print(a[condition])   # [20 30]
+```
+Also works with:
+```python
+# Same thing using & and | (with parentheses)
+print(a[(a > 15) & (a < 35)])  # [20 30]
+```
+**4. Broadcasting**
+Broadcasting allows NumPy to do operations between arrays of different shapes.
+Scalar + Array
+```python
+a = np.array([1, 2, 3])
+print(a + 5)  # [6 7 8]
+```
+2D + 1D (Row or Column)
+```python
+a = np.array([[1, 2, 3],
+              [4, 5, 6]])
+
+b = np.array([10, 20, 30])  # Shape (3,)
+
+print(a + b)
+# [[11 22 33]
+#  [14 25 36]]
+```
+➡ b is broadcasted across rows automatically.
+
+**Broadcasting Rules (Simplified)**
+- If shapes are equal → element-wise operation.
+- If one shape is 1 → it is broadcasted (stretched).
+- If shapes can’t be aligned → error.
+
+---
 
 
 
