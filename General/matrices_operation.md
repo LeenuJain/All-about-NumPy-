@@ -147,44 +147,11 @@ std_dev = np.std(data)
 
 print(std_dev)  # Output: 2.0
 ```
+---
 
-🔸 Formula for Standard Deviation (Population)
+Term   	--> Description
+Mean	       --> Average of the data
+Variance	--> Average squared difference from the mean
+Standard Dev.	-->Square root of variance (in original unit)
 
-\[
-\sigma = \sqrt{ \frac{1}{N} \sum_{i=1}^{N} (x_i - \mu)^2 }
-\]
-
-Where:
-
-- \( x_i \) = each value  
-- \( \mu \) = mean (average) of all values  
-- \( N \) = total number of values  
-- \( \sigma \) = standard deviation  
-
-🔸 Steps to Calculate (Example with data = [2, 4, 4, 4, 5, 5, 7, 9]):
-
-1. **Find the mean (μ):**  
-   \[
-   \mu = \frac{2 + 4 + 4 + 4 + 5 + 5 + 7 + 9}{8} = \frac{40}{8} = 5
-   \]
-
-2. **Subtract the mean and square the result for each value:**  
-   \[
-   (2 - 5)^2 = 9,\quad (4 - 5)^2 = 1,\quad (4 - 5)^2 = 1,\quad (4 - 5)^2 = 1  
-   \]
-   \[
-   (5 - 5)^2 = 0,\quad (5 - 5)^2 = 0,\quad (7 - 5)^2 = 4,\quad (9 - 5)^2 = 16
-   \]
-
-3. **Take the average of these squared differences:**  
-   \[
-   \frac{9 + 1 + 1 + 1 + 0 + 0 + 4 + 16}{8} = \frac{32}{8} = 4
-   \]
-
-4. **Take the square root of the result:**  
-   \[
-   \sqrt{4} = 2
-   \]
-
-🔸 **Conclusion:**  
-Standard deviation (σ) = **2**
+---
