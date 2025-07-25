@@ -480,9 +480,70 @@ print(arr) # [4 1 5 3 2]
 
 ---
 
+## 🔸 Concatenate()
+np.concatenate() is used to **join two or more arrays along an existing axis** (rows or columns, etc.).
+Syntax:
+```python
+np.concatenate((array1, array2), axis=0)
+```
+- axis=0 → Join along rows (vertically)
+- axis=1 → Join along columns (horizontally) — valid for 2D arrays and higher
 
+**1. 1D Arrays – Axis doesn't matter**
+```python
+import numpy as np
 
+a = np.array([1, 2, 3])
+b = np.array([4, 5, 6])
 
+result = np.concatenate((a, b))
+print(result)
+```
+**Output**
+```python
+[1 2 3 4 5 6]
+```
+
+**2. 2D Arrays — Join Vertically (axis=0)**
+```python
+a = np.array([[1, 2],
+              [3, 4]])
+b = np.array([[5, 6],
+              [7, 8]])
+
+result = np.concatenate((a, b), axis=0)
+print(result)
+```
+**output**
+```python
+[[1 2]
+ [3 4]
+ [5 6]
+ [7 8]]
+```
+
+**3. 2D Arrays — Join Horizontally (axis=1)**
+```python
+result = np.concatenate((a, b), axis=1)
+print(result)
+```
+
+**Output**
+```python
+[[1 2 5 6]
+ [3 4 7 8]]
+```
+
+## ⚠️ Important Rules
+
+| Condition   | Requirement                                 |
+|-------------|----------------------------------------------|
+| Axis = 0    | All arrays must have the **same number of columns** |
+| Axis = 1    | All arrays must have the **same number of rows**    |
+
+> ⚠️ If shapes don’t match appropriately, it throws a `ValueError`.
+
+---
 
 
 
