@@ -632,7 +632,7 @@ print(result)
 ```
 Shape: (2, 2, 2)
 
-#### ✅ Related Shortcuts
+#### Related Shortcuts
 
 | Function      | Description                                          |
 |---------------|------------------------------------------------------|
@@ -642,14 +642,14 @@ Shape: (2, 2, 2)
 
 ---
 
-## 🔹 Splitting Arrays
+## 🔸 Splitting Arrays
 
 | Function             | Description                                                                 |
 |----------------------|-----------------------------------------------------------------------------|
 | `np.split()`         | Splits array into equal-sized sub-arrays. All parts must be of equal size. |
 | `np.array_split()`   | Splits array into approximately equal parts. Works even if sizes are uneven.|
 
-### ✅ Example:
+### Example:
 
 ```python
 import numpy as np
@@ -688,15 +688,147 @@ np.split(arr2d, 2, axis=1)
 
 ---
 
+## 🔸 squeeze()
+
+`np.squeeze()` **removes axes of size 1** (i.e., dimensions with length 1) from the shape of an array.
+
+#### Syntax:
+```python
+np.squeeze(a, axis=None)
+```
+
+- `a`: The input array  
+- `axis` *(optional)*: Remove only specific axis if it’s of size 1 — otherwise, it raises an error.
+
+#### Why use it?
+
+To:
+- Reduce dimensions (e.g., from `(1, 3, 1)` to `(3,)`)
+- Make arrays more compact
+- Prepare arrays for plotting or computation when an extra dimension isn’t needed
 
 
+#### Example 1: Remove all dimensions of size 1
+```python
+import numpy as np
+
+arr = np.array([[[10, 20, 30]]])  # Shape: (1, 1, 3)
+print("Original shape:", arr.shape)
+
+squeezed = np.squeeze(arr)
+print("Squeezed shape:", squeezed.shape)
+print(squeezed)
+```
+
+**Output**:
+```text
+Original shape: (1, 1, 3)
+Squeezed shape: (3,)
+[10 20 30]
+```
+
+#### Example 2: Use `axis` to squeeze a specific dimension
+```python
+arr = np.array([[[1], [2], [3]]])  # Shape: (1, 3, 1)
+print(arr.shape)  # (1, 3, 1)
+
+# Remove only axis 0
+result = np.squeeze(arr, axis=0)
+print(result.shape)  # (3, 1)
+
+# Remove only axis 2
+result = np.squeeze(arr, axis=2)
+print(result.shape)  # (1, 3)
+```
+
+#### Summary Table
+
+| Input Shape | `np.squeeze()` Result |
+|-------------|------------------------|
+| (1, 3, 1)   | (3,)                   |
+| (3, 1)      | (3,)                   |
+| (1, 3, 5)   | (3, 5)                 |
+| (3, 5)      | (3, 5)                 |
 
 
+### ⚠️ Important Rule:
+- You can only squeeze **axes that have size = 1**.
+- Trying to squeeze a dimension with more than 1 element will raise an error **if `axis` is specified**.
 
+---
 
+## 🔸 expand_dims()
 
+`np.expand_dims()` adds a new axis (dimension) to your array at the specified position.
 
+#### Syntax:
+```python
+np.expand_dims(arr, axis)
+```
 
+#### Why use it?
 
+To reshape arrays so they match another array's dimensions — especially useful for:
+- Broadcasting
+- Batch processing
+- Machine learning
+
+#### Example 1: Expanding a 1D Array
+
+```python
+import numpy as np
+
+arr = np.array([1, 2, 3])
+print(arr.shape)  # (3,)
+```
+
+👉 Add a new axis at position `0` (as a row):
+```python
+expanded = np.expand_dims(arr, axis=0)
+print(expanded.shape)  # (1, 3)
+print(expanded)
+```
+**Output**:
+```python
+[[1 2 3]]
+```
+
+👉 Add a new axis at position `1` (as a column):
+```python
+expanded = np.expand_dims(arr, axis=1)
+print(expanded.shape)  # (3, 1)
+print(expanded)
+```
+**Output**:
+```python
+[[1]
+ [2]
+ [3]]
+```
+
+#### Example 2: Expanding a 2D Array
+
+```python
+arr2d = np.array([[1, 2], [3, 4]])
+print(arr2d.shape)  # (2, 2)
+
+# Add a new axis at the beginning → shape becomes (1, 2, 2)
+expanded = np.expand_dims(arr2d, axis=0)
+print(expanded)
+```
+**Output**:
+```python
+[[[1, 2],
+  [3, 4]]]
+```
+
+#### Summary Table
+
+| Original Shape | `axis=0`    | `axis=1`     | `axis=2`     |
+|----------------|-------------|--------------|--------------|
+| (3,)           | (1, 3)      | (3, 1)       | ❌ Not valid |
+| (2, 2)         | (1, 2, 2)   | (2, 1, 2)    | (2, 2, 1)    |
+
+---  
 
 
