@@ -480,7 +480,7 @@ print(arr) # [4 1 5 3 2]
 
 ---
 
-## 🔸 Concatenate()
+## 🔸 concatenate()
 np.concatenate() is used to **join two or more arrays along an existing axis** (rows or columns, etc.).
 Syntax:
 ```python
@@ -534,7 +534,7 @@ print(result)
  [3 4 7 8]]
 ```
 
-## ⚠️ Important Rules
+**⚠️ Important Rules**
 
 | Condition   | Requirement                                 |
 |-------------|----------------------------------------------|
@@ -544,6 +544,153 @@ print(result)
 > ⚠️ If shapes don’t match appropriately, it throws a `ValueError`.
 
 ---
+
+## 🔸 stack() 
+np.stack() **joins arrays along a new axis.**
+> 🔁 Unlike concatenate, which joins along an existing axis, stack adds a new dimension.
+
+**Syntax**
+```python
+np.stack((array1, array2), axis=0)
+```
+- axis=0 → Stacks along a new outer axis (adds one more dimension at the beginning)
+- axis=1 → Inserts a new axis in the middle
+
+**1. Stack 1D arrays with axis=0**
+```python
+import numpy as np
+
+a = np.array([1, 2, 3])
+b = np.array([4, 5, 6])
+
+result = np.stack((a, b), axis=0)
+print(result)
+```
+**Output**
+```python
+[[1 2 3]
+ [4 5 6]]
+```
+Shape: (2, 3)
+→ Two arrays stacked as rows
+   
+**2. Stack 1D arrays with axis=1**
+```python
+result = np.stack((a, b), axis=1)
+print(result)
+```
+**Output**
+```python
+[[1 4]
+ [2 5]
+ [3 6]]
+```
+Shape: (3, 2)
+→ Two arrays stacked as columns  
+  
+**3. Stack 2D arrays with axis=0**
+```python
+a = np.array([[1, 2],
+              [3, 4]])
+
+b = np.array([[5, 6],
+              [7, 8]])
+
+result = np.stack((a, b), axis=0)
+print(result)
+```
+**Output**
+```python
+[[[1 2]
+  [3 4]]
+
+ [[5 6]
+  [7 8]]]
+```
+ Shape: (2, 2, 2)
+→ New dimension added: we now have a 3D array
+  
+**4. Stack 2D arrays with axis=1**
+```python
+import numpy as np
+
+a = np.array([[1, 2],
+              [3, 4]])
+
+b = np.array([[5, 6],
+              [7, 8]])
+result = np.stack((a, b), axis=1)
+print(result)
+```
+**Output**
+```python
+[[[1 2]
+  [5 6]]
+
+ [[3 4]
+  [7 8]]]
+```
+Shape: (2, 2, 2)
+
+#### ✅ Related Shortcuts
+
+| Function      | Description                                          |
+|---------------|------------------------------------------------------|
+| `np.vstack()` | Shortcut for `stack(..., axis=0)` for vertical stacking |
+| `np.hstack()` | Shortcut for `concatenate(..., axis=1)`              |
+| `np.dstack()` | Stacks along depth (adds a new 3rd axis)             |
+
+---
+
+## 🔹 Splitting Arrays
+
+| Function             | Description                                                                 |
+|----------------------|-----------------------------------------------------------------------------|
+| `np.split()`         | Splits array into equal-sized sub-arrays. All parts must be of equal size. |
+| `np.array_split()`   | Splits array into approximately equal parts. Works even if sizes are uneven.|
+
+### ✅ Example:
+
+```python
+import numpy as np
+
+arr = np.array([1, 2, 3, 4, 5, 6])
+
+# Using np.split (must divide evenly)
+print(np.split(arr, 3))  
+# Output: [array([1, 2]), array([3, 4]), array([5, 6])]
+
+# Using np.array_split (can handle uneven splits)
+print(np.array_split(arr, 4))  
+# Output: [array([1, 2]), array([3, 4]), array([5]), array([6])]
+```
+
+### ⚠️ Important Rule:
+- `np.split()` raises a `ValueError` if array can’t be divided evenly.
+- `np.array_split()` avoids that by adjusting sub-array sizes.
+
+**Splitting 2D Arrays**
+```python
+arr2d = np.array([[1, 2, 3, 4],
+                  [5, 6, 7, 8]])
+
+# Split columns into 2 parts
+np.split(arr2d, 2, axis=1)
+```
+**Output**
+```python
+[array([[1, 2],
+        [5, 6]]), 
+
+ array([[3, 4],
+        [7, 8]])]
+```
+
+---
+
+
+
+
 
 
 
