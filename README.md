@@ -634,11 +634,13 @@ Shape: (2, 2, 2)
 
 #### Related Shortcuts
 
-| Function      | Description                                          |
-|---------------|------------------------------------------------------|
-| `np.vstack()` | Shortcut for `stack(..., axis=0)` for vertical stacking |
-| `np.hstack()` | Shortcut for `concatenate(..., axis=1)`              |
-| `np.dstack()` | Stacks along depth (adds a new 3rd axis)             |
+| **Function**  | **Equivalent To**             | **Description**                           | **Example Shapes**                                |
+| ------------- | ----------------------------- | ----------------------------------------- | ------------------------------------------------- |
+| `np.vstack()` | `np.concatenate(..., axis=0)` | Stacks arrays vertically (row-wise)       | (1, 3) + (1, 3) → ✅ (2, 3)<br>(2, 3) + (2, 3) → ❌ |
+| `np.hstack()` | `np.concatenate(..., axis=1)` | Stacks arrays horizontally (column-wise)  | (2, 3) + (2, 2) → ✅ (2, 5)                        |
+| `np.dstack()` | `np.stack(..., axis=2)`       | Stacks arrays along depth (new 3rd axis)  | (2, 3) + (2, 3) → ✅ (2, 3, 2)                     |
+| `np.stack()`  | Manual control of `axis`      | Adds a new axis at the specified position | (2, 3) + (2, 3) → ✅ (2, 3, 2) if `axis=2`         |
+
 
 ---
 
