@@ -149,9 +149,9 @@ print(std_dev)  # Output: 2.0
 ```
 ---
 
-Term   	--> Description
-Mean	       --> Average of the data
-Variance	--> Average squared difference from the mean
-Standard Dev.	-->Square root of variance (in original unit)
+Term   	--> Description    
+Mean	       --> Average of the data    
+Variance	--> Average squared difference from the mean  
+Standard Dev.	-->Square root of variance (in original unit)  
 
 ---
