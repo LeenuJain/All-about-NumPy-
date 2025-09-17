@@ -125,7 +125,7 @@ Resulting shape	m×p (rows of A × columns of B)
 Standard deviation is a measure of **how spread out or scattered the values in a data set are from the mean (average).**
 
 🔸 In Simple Words:
-Small standard deviation → Data is close to the mean
+Small standard deviation → Data is close to the mean   
 Large standard deviation → Data is more spread out
 
 🔸 Example:
