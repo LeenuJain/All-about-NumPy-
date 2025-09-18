@@ -496,6 +496,55 @@ print(arr) # [4 1 5 3 2]
 
 ---
 
+## 🔸 flip():
+You can flip a NumPy matrix **horizontally, vertically, or both** using np.flip().
+
+**1.Flip Horizontally (along columns)**
+- Use axis=1 to reverse the order of columns.
+```python
+import numpy as np
+matrix = np.array([[1, 2, 3],
+                   [4, 5, 6],
+                   [7, 8, 9]])
+
+horizontal_flip = np.flip(matrix, axis=1)
+print(horizontal_flip)
+```
+result:
+```python
+[[3 2 1]
+ [6 5 4]
+ [9 8 7]]
+```
+
+**2. Flip Vertically (along rows)**
+-Use axis=0 to reverse the order of rows.
+```python
+vertical_flip = np.flip(matrix, axis=0)
+print(vertical_flip)
+```
+result:
+```python
+[[7 8 9]
+ [4 5 6]
+ [1 2 3]]
+```
+
+**3. Flip Both Horizontally and Vertically**
+-Use np.flip(matrix) without specifying an axis.
+```python
+full_flip = np.flip(matrix)
+print(full_flip)
+```
+result:
+```python
+[[9 8 7]
+ [6 5 4]
+ [3 2 1]]
+```
+
+---
+
 ## 🔸 concatenate()
 np.concatenate() is used to **join two or more arrays along an existing axis** (rows or columns, etc.).
 Syntax:
