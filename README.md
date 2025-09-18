@@ -450,7 +450,23 @@ result
  [11 17 10]]
 ```
 
-**5.np.random.choice() — Randomly pick from a list**  
+**5.np.random.uniform() — Random float**  
+Syntax :
+```python
+np.random.uniform(low, high, size)
+```
+Generates random floats in [low, high)
+Example
+```python
+np.random.uniform(1, 10, size=(2, 3))
+```
+result
+```python
+[[5.53139357 2.42847805 5.47144557]
+ [9.6102242  1.5280245  7.76338935]]
+```
+
+**6.np.random.choice() — Randomly pick from a list**  
 Syntax : 
 ```python
 np.random.choice(array, size, replace=True/False)
@@ -468,7 +484,7 @@ result
 [2 4 1]
 ```
 
-**6.np.random.shuffle() — Shuffle an array in-place**  
+**7.np.random.shuffle() — Shuffle an array in-place**  
 - Modifies the array directly
 - No return value
 
