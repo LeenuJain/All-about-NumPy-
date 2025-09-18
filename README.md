@@ -898,4 +898,10 @@ print(expanded)
 
 ---  
 
+## 🔸 argsmax
+Function                -- Description   
+np.argmax(arr)          -- Index of max value in flattened array  
+np.argmax(arr, axis=0)  -- Index of max value in each column  
+np.argmax(arr, axis=1)  -- Index of max value in each row  
 
+---
