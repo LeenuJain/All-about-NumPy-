@@ -230,6 +230,11 @@ index = np.where(arr > 15)
 print(index)         # (array([2, 3]),)
 print(arr[index])    # [20 25]
 ```
+syntax : np.where(condition, x, y)
+- condition: A Boolean array — wherever this is True, values from x are selected.
+- x: Values to use where condition is True.
+- y: Values to use where condition is False.
+
 ---
 ## 🔸 Array operations
 **1. Element-wise Arithmetic**
